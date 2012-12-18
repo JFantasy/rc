@@ -20,3 +20,15 @@ if has("gui_running")
     set guifont=Menlo:h16
     set mouse=a
 endif
+
+function AddTitle()
+    call append(0,"/**")
+    call append(1," * @file ".expand("%:t"))
+    call append(2," * @author jishenghuai(jfantasy90@gmail.com)")
+    call append(3," * @date ".strftime("%Y-%m-%d %H:%M"))
+    call append(4," * @brief")
+    call append(5," *")
+    call append(6," **/")
+endf
+
+map <F5> :call AddTitle()<CR>
