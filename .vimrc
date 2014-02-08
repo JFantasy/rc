@@ -1,34 +1,22 @@
-set nu
-set cursorline
-set bg=dark
-set et
-set ruler
-set sw=4
-set ts=4
-set sts=4
-set showmatch
-set matchtime=2
-syntax on
-set autoindent
+set nu ru cursorline cursorcolumn et autoindent nobackup noswapfile
+set sw=2 sts=2 ts=2
+set t_Co=256
 filetype plugin indent on
-colorscheme jellybeans
+syntax on
+color jellybeans
 
-let g:winManagerWindowLayout='FileExplorer'
+"Bundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'winmanager'
+Bundle 'powerline'
+Bundle 'syntastic'
+
+"Powerline
+let g:Powline_symbols='fancy'
+set laststatus=2
+
+"NMap
 nmap wm :WMToggle<cr>
-if has("gui_running")
-    set go=aAce
-    set guifont=Menlo:h16
-    set mouse=a
-endif
-
-function AddTitle()
-    call append(0,"/**")
-    call append(1," * @file ".expand("%:t"))
-    call append(2," * @author jishenghuai(jfantasy90@gmail.com)")
-    call append(3," * @date ".strftime("%Y-%m-%d %H:%M"))
-    call append(4," * @brief")
-    call append(5," *")
-    call append(6," **/")
-endf
-
-map <F5> :call AddTitle()<CR>
+nmap wt :tabn<cr>
+nmap wy :tabp<cr>
